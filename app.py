@@ -1,3 +1,4 @@
+from unicodedata import normalize
 import requests
 import jinja2
 import csv
@@ -31,11 +32,8 @@ def geraAssinaturaHTML():
                 i = i + 1
 
             nomeassinatura = data['Nome']
-            nomeassinatura = re.sub('ã','a', nomeassinatura)
-            nomeassinatura = re.sub('é', 'e', nomeassinatura)
-            # Caso queira testar a saída de texto remova o comentário da linha abaixo
-            # print(nomeassinatura)
-            nomearquivo = re.sub('[^A-Za-z0-9]+', '', nomeassinatura)
+            nomeassinatura = re.sub('\s+', '', nomeassinatura)
+            nomearquivo = remover_acentos(nomeassinatura)
             arquivoAssinatura = open('assinaturas/' + nomearquivo + '.html', 'w')
             arquivoAssinatura.write(template.render(data=data, nome=data['Nome'], cargo=data['Cargo'], email=data['Email']))
 
@@ -43,6 +41,8 @@ def geraAssinaturaHTML():
             # print(template.render(data=data, nome=data['Nome'], cargo=data['Cargo'], email=data['Email']))
         linha = linha + 1
 
+def remover_acentos(txt):
+    return normalize('NFKD', txt).encode('ASCII','ignore').decode('ASCII')
 
 if __name__ == '__main__':
     geraAssinaturaHTML()
