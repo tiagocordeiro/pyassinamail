@@ -1,0 +1,1 @@
+from app import remover_acentos
