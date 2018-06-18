@@ -1,6 +1,8 @@
 # PyAssinaMail
 Gera assinaturas de email automagicamente a partir de uma planilha no google spreadsheets
 
+[![Build Status](https://travis-ci.org/tiagocordeiro/pyassinamail.svg?branch=master)](https://travis-ci.org/tiagocordeiro/pyassinamail)
+
 ## Como usar
 
 1. Clone o projeto
