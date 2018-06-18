@@ -1,0 +1,1 @@
+Suas assinaturas serão geradas nesta pasta.
