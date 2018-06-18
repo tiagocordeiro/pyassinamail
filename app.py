@@ -6,7 +6,7 @@ import io
 import re
 
 
-def geraAssinaturaHTML():
+def gera_assinatura_html():
     file_id = "1Q6zlAQfVKr9Y7Hj2oRXLaWLuwefzc8f1PubEcE2B1gM"
     url = f"https://docs.google.com/spreadsheets/d/{file_id}/export?format=csv"
     arquivo = requests.get(url)
@@ -51,4 +51,4 @@ def remover_acentos(txt):
 
 
 if __name__ == '__main__':
-    geraAssinaturaHTML()
+    gera_assinatura_html()
