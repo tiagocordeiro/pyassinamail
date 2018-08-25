@@ -1,4 +1,4 @@
-atomicwrites==1.1.5
+atomicwrites==1.2.0
 attrs==18.1.0
 flake8==3.5.0
 mccabe==0.6.1
