@@ -1,6 +1,6 @@
 certifi==2018.4.16
 chardet==3.0.4
-idna==2.7
+idna==2.8
 Jinja2==2.10
 MarkupSafe==1.0
 requests==2.20.1
