@@ -32,7 +32,7 @@ def gera_assinatura_html():
                 i = i + 1
 
             nomeassinatura = data['Nome']
-            nomeassinatura = re.sub('\s+', '', nomeassinatura)
+            nomeassinatura = re.sub(r'\s+', '', nomeassinatura)
             nomearquivo = remover_acentos(nomeassinatura)
             arquivoAssinatura = open('assinaturas/' + nomearquivo + '.html',
                                      'w')
