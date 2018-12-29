@@ -2,6 +2,9 @@
 Gera assinaturas de email automagicamente a partir de uma planilha no google spreadsheets
 
 [![Build Status](https://travis-ci.org/tiagocordeiro/pyassinamail.svg?branch=master)](https://travis-ci.org/tiagocordeiro/pyassinamail)
+[![Updates](https://pyup.io/repos/github/tiagocordeiro/pyassinamail/shield.svg)](https://pyup.io/repos/github/tiagocordeiro/pyassinamail/)
+[![Python 3](https://pyup.io/repos/github/tiagocordeiro/pyassinamail/python-3-shield.svg)](https://pyup.io/repos/github/tiagocordeiro/pyassinamail/)
+
 
 ## Como usar
 
@@ -14,20 +17,19 @@ Gera assinaturas de email automagicamente a partir de uma planilha no google spr
 
 ### 1. Clonando o projeto
 ```
-usuario@maquina:~/meus_projetos$ git clone https://github.com/tiagocordeiro/pyassinamail.git
-usuario@maquina:~/meus_projetos$ cd pyassinamail
+git clone https://github.com/tiagocordeiro/pyassinamail.git
+cd pyassinamail
 ```
 
 ### 2. Criando um ambiente virtual
 ```
-usuario@maquina:~/meus_projetos/pyassinamail$ python3 -m venv venv
-usuario@maquina:~/meus_projetos/pyassinamail$ source venv/bin/actiate
-(venv) usuario@maquina:~/meus_projetos/pyassinamail$
+python3 -m venv venv
+source venv/bin/actiate
 ```
 
 ### 3. Instalando as dependências
 ```
-(venv) usuario@maquina:~/meus_projetos/pyassinamail$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 #### TODO
