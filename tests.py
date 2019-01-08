@@ -1,4 +1,4 @@
-from .app import remover_acentos
+from .app import remover_acentos, gera_assinatura_html
 import os
 
 
@@ -17,4 +17,10 @@ def test_remove_acentos():
 
 def test_template_existe():
     template_file = os.path.isfile("templates/assinatura.html")
-    assert template_file == True
+    print(template_file.bit_length())
+    assert template_file is True
+
+
+def test_assinatura():
+    assert gera_assinatura_html() is not None
+

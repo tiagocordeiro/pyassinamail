@@ -4,10 +4,13 @@ import jinja2
 import csv
 import io
 import re
+import json
 
 
-def gera_assinatura_html():
-    file_id = "1Q6zlAQfVKr9Y7Hj2oRXLaWLuwefzc8f1PubEcE2B1gM"
+gsheet_file_id = "1Q6zlAQfVKr9Y7Hj2oRXLaWLuwefzc8f1PubEcE2B1gM"
+
+
+def gera_assinatura_html(file_id=gsheet_file_id):
     url = f"https://docs.google.com/spreadsheets/d/{file_id}/export?format=csv"
     arquivo = requests.get(url)
     arquivo.encoding = arquivo.apparent_encoding
@@ -18,6 +21,7 @@ def gera_assinatura_html():
     data = {}
     coluna = []
     linha = 0
+    retorno = {'retorno': {'assinaturas': []}}
 
     dados_funcionarios = csv.reader(arquivoio)
     for row in dados_funcionarios:
@@ -34,16 +38,15 @@ def gera_assinatura_html():
             nomeassinatura = data['Nome']
             nomeassinatura = re.sub(r'\s+', '', nomeassinatura)
             nomearquivo = remover_acentos(nomeassinatura)
-            arquivoAssinatura = open('assinaturas/' + nomearquivo + '.html',
-                                     'w')
-            arquivoAssinatura.write(
-                template.render(data=data, nome=data['Nome'],
-                                cargo=data['Cargo'], email=data['Email']))
+            arquivo_assinatura = open('assinaturas/' + nomearquivo + '.html', 'w')
+            arquivo_assinatura.write(
+                template.render(data=data, nome=data['Nome'], cargo=data['Cargo'], email=data['Email']))
 
             # Se quiser imprimir na tela, remova o comentário na linha abaixo
-            # print(template.render(data=data, nome=data['Nome'],
-            #                       cargo=data['Cargo'], email=data['Email']))
+            # print(template.render(data=data, nome=data['Nome'], cargo=data['Cargo'], email=data['Email']))
         linha = linha + 1
+
+    return json.dumps(retorno)
 
 
 def remover_acentos(txt):

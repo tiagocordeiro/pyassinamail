@@ -1,0 +1,5 @@
+[run]
+source=app.py
+omit =
+    # omit anything in venv directory anywhere
+    */venv/*
