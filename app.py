@@ -1,13 +1,16 @@
-from unicodedata import normalize
-import requests
-import jinja2
 import csv
 import io
 import re
+from unicodedata import normalize
+
+import jinja2
+import requests
+
+gsheet_file_id = "1Q6zlAQfVKr9Y7Hj2oRXLaWLuwefzc8f1PubEcE2B1gM"
 
 
-def gera_assinatura_html():
-    file_id = "1Q6zlAQfVKr9Y7Hj2oRXLaWLuwefzc8f1PubEcE2B1gM"
+def gera_assinatura_html(file_id=gsheet_file_id):
+    file_id = file_id
     url = f"https://docs.google.com/spreadsheets/d/{file_id}/export?format=csv"
     arquivo = requests.get(url)
     arquivo.encoding = arquivo.apparent_encoding
@@ -18,6 +21,7 @@ def gera_assinatura_html():
     data = {}
     coluna = []
     linha = 0
+    assinaturas = {'retorno': {'assinaturas': []}}
 
     dados_funcionarios = csv.reader(arquivoio)
     for row in dados_funcionarios:
@@ -34,16 +38,17 @@ def gera_assinatura_html():
             nomeassinatura = data['Nome']
             nomeassinatura = re.sub(r'\s+', '', nomeassinatura)
             nomearquivo = remover_acentos(nomeassinatura)
-            arquivoAssinatura = open('assinaturas/' + nomearquivo + '.html',
-                                     'w')
-            arquivoAssinatura.write(
-                template.render(data=data, nome=data['Nome'],
-                                cargo=data['Cargo'], email=data['Email']))
+            arquivo_assinatura = open('assinaturas/' + nomearquivo + '.html', 'w')
+            arquivo_assinatura.write(template.render(data=data,
+                                                     nome=data['Nome'],
+                                                     cargo=data['Cargo'],
+                                                     email=data['Email']))
 
-            # Se quiser imprimir na tela, remova o comentário na linha abaixo
-            # print(template.render(data=data, nome=data['Nome'],
-            #                       cargo=data['Cargo'], email=data['Email']))
+            assinatura = (data['Nome'], data['Cargo'], data['Email'])
+            assinaturas['retorno']['assinaturas'].append(assinatura)
         linha = linha + 1
+
+    return assinaturas
 
 
 def remover_acentos(txt):

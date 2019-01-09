@@ -2,12 +2,14 @@ language: python
 python:
   - "3.6.5"
 # command to install dependencies
-install: "pip install -r requirements-dev.txt"
+install:
+  - pip install -r requirements-dev.txt codecov
 # command to run tests
 script:
-  - flake8 app.py
-  - pytest tests.py
+  - flake8
+  - pytest --cov='.' tests.py -v
+#  - pytest tests.py
 #  - py.test --cov=pytocli tests/
 #  - python -m doctest README.md
-# after_success:
-#  - coveralls
+after_success:
+  - codecov
