@@ -1,5 +1,5 @@
 atomicwrites==1.2.1
-attrs==18.2.0
+attrs==19.2.0
 flake8==3.6.0
 mccabe==0.6.1
 more-itertools==5.0.0
