@@ -14,7 +14,7 @@ def gera_assinatura_html(file_id=gsheet_file_id):
     url = f"https://docs.google.com/spreadsheets/d/{file_id}/export?format=csv"
     arquivo = requests.get(url)
     arquivo.encoding = arquivo.apparent_encoding
-    env = jinja2.Environment()
+    env = jinja2.Environment(autoescape=True)
     env.loader = jinja2.FileSystemLoader("templates/")
     template = env.get_template("assinatura.html")
     arquivoio = io.StringIO(arquivo.text, newline=None)
@@ -38,7 +38,8 @@ def gera_assinatura_html(file_id=gsheet_file_id):
             nomeassinatura = data['Nome']
             nomeassinatura = re.sub(r'\s+', '', nomeassinatura)
             nomearquivo = remover_acentos(nomeassinatura)
-            arquivo_assinatura = open('assinaturas/' + nomearquivo + '.html', 'w')
+            arquivo_path = 'assinaturas/' + nomearquivo + '.html'
+            arquivo_assinatura = open(arquivo_path, 'w')
             arquivo_assinatura.write(template.render(data=data,
                                                      nome=data['Nome'],
                                                      cargo=data['Cargo'],
