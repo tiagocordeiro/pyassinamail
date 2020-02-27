@@ -1,38 +1,85 @@
 # PyAssinaMail
 Gera assinaturas de email automagicamente a partir de uma planilha no google spreadsheets
 
-[![Build Status](https://travis-ci.org/tiagocordeiro/pyassinamail.svg?branch=master)](https://travis-ci.org/tiagocordeiro/pyassinamail)
 [![Updates](https://pyup.io/repos/github/tiagocordeiro/pyassinamail/shield.svg)](https://pyup.io/repos/github/tiagocordeiro/pyassinamail/)
 [![Python 3](https://pyup.io/repos/github/tiagocordeiro/pyassinamail/python-3-shield.svg)](https://pyup.io/repos/github/tiagocordeiro/pyassinamail/)
+[![Build Status](https://travis-ci.org/tiagocordeiro/pyassinamail.svg?branch=master)](https://travis-ci.org/tiagocordeiro/pyassinamail)
+[![codecov](https://codecov.io/gh/tiagocordeiro/pyassinamail/branch/master/graph/badge.svg)](https://codecov.io/gh/tiagocordeiro/pyassinamail)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/tiagocordeiro/pyassinamail/blob/master/LICENSE)
 
 
-## Como usar
+#### Como usar
+Antes de mais nada você precisa ter uma planilha online como a do exemplo:
 
-1. Clone o projeto
-2. Crie e ative um ambiente virtual
-3. Instale as dependências do projeto
-4. Planilha Google
-5. URL planilha no `app.py`
-6. Rode o script
+> [Planilha Google de exemplo](https://docs.google.com/spreadsheets/d/1vW0NDxmZcQ-Gna9LY6vnsjDm6hVc55QSOt9VGtTAnds/)
 
-### 1. Clonando o projeto
-```
+> O compartilhamento de links deve estar `Ativado`
+
+![Imagem do compartilhamento de links do Google Planilhas](docs/images/google_planilha_share.png)
+
+> Agora você precisa do ID da planilha, você pode pegar na url.
+
+![Imagem da url com o ID da planilha selecionado](docs/images/google_planilha_id.png)
+
+
+#### Como rodar o projeto
+* Clone esse repositório.
+* Crie um virtualenv com Python 3.
+* Ative o virtualenv.
+* Instale as dependências.
+* Rode o script
+
+```shell
 git clone https://github.com/tiagocordeiro/pyassinamail.git
 cd pyassinamail
-```
-
-### 2. Criando um ambiente virtual
-```
 python3 -m venv venv
-source venv/bin/actiate
-```
-
-### 3. Instalando as dependências
-```
+source venv/bin/activate
+pip install --upgrade pip
 pip install -r requirements.txt
+python contrib/env_gen.py
+python app.py
 ```
 
-#### TODO
-- [ ] Melhorar documentação
-- [ ] Testes 
+Os arquivos `.html` serão gerados na pasta `assinaturas/`
 
+> Importando no seu projeto
+```shell
+>>> from app import gera_assinatura_html
+>>> assinaturas = gera_assinatura_html()
+>>> assinaturas
+{'retorno': {'assinaturas': [('Foo', 'Bar', 'dev@foo.bar'), ('Bar', 'Foo', 'dev@bar.foo')]}}
+
+```
+
+#### Testes, contribuição e dependências de desenvolvimento
+Para instalar as dependências de desenvolvimento
+```shell
+pip install -r requirements-dev.txt
+```
+
+Para rodar os testes
+```shell
+pytest --cov='.' tests.py -v
+python -m doctest README.md -v
+```
+
+Para gerar o relatório de cobertura de testes
+```shell
+coverage html
+```
+
+Verificando o `Code style`
+```shell
+pycodestyle .
+flake8 .
+```
+
+
+#### Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+
+#### License
+[MIT](https://github.com/tiagocordeiro/pyassinamail/blob/master/LICENSE)

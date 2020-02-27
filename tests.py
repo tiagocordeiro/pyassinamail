@@ -1,5 +1,6 @@
-from .app import remover_acentos, gera_assinatura_html
 import os
+
+from .app import remover_acentos, gera_assinatura_html
 
 
 def test_cria_arquivo(tmpdir):
