@@ -7,6 +7,7 @@ Gera assinaturas de email automagicamente a partir de uma planilha no google spr
 [![codecov](https://codecov.io/gh/tiagocordeiro/pyassinamail/branch/master/graph/badge.svg)](https://codecov.io/gh/tiagocordeiro/pyassinamail)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/tiagocordeiro/pyassinamail/blob/master/LICENSE)
 
+[![Veja no youtube](https://img.youtube.com/vi/WYjf94H-Lm0/0.jpg)](https://www.youtube.com/watch?v=WYjf94H-Lm0)
 
 #### Como usar
 Antes de mais nada você precisa ter uma planilha online como a do exemplo:
