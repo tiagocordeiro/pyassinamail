@@ -82,5 +82,8 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 
+### Thanx
+- [[ ~ Dependencies scanned by PyUp.io ~ ]](https://pyup.io/)
+
 #### License
 [MIT](https://github.com/tiagocordeiro/pyassinamail/blob/master/LICENSE)

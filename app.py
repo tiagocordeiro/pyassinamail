@@ -5,7 +5,12 @@ from unicodedata import normalize
 
 import jinja2
 import requests
-from dynaconf import settings
+from dynaconf import Dynaconf
+
+settings = Dynaconf(
+    environments=True,
+    load_dotenv=True
+)
 
 sheet_file_id = settings.FILE_ID
 
