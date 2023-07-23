@@ -1,4 +1,5 @@
 import csv
+import click
 import io
 import re
 from unicodedata import normalize
@@ -15,7 +16,9 @@ settings = Dynaconf(
 sheet_file_id = settings.FILE_ID
 
 
-def gera_assinatura_html(file_id=sheet_file_id):
+@click.command()
+@click.option('--template', default='assinatura.html', help='Template HTML')
+def gera_assinatura_html(file_id=sheet_file_id, template='assinatura.html'):
     file_id = file_id
     people_url = f"https://docs.google.com/spreadsheets/d/{file_id}/gviz/tq" \
                  f"?tqx=out:csv&sheet=people"
@@ -41,7 +44,7 @@ def gera_assinatura_html(file_id=sheet_file_id):
 
     env = jinja2.Environment(autoescape=True)
     env.loader = jinja2.FileSystemLoader("templates/")
-    template = env.get_template("assinatura.html")
+    template = env.get_template(template)
 
     for row in people_data:
         if linha == 0:
