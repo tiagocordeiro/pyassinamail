@@ -43,11 +43,16 @@ python app.py
 
 Os arquivos `.html` serão gerados na pasta `assinaturas/`
 
+> Exemplo de uso com template
+```shell
+python app.py --template chemical.html
+```
+
 > Importando no seu projeto
 ```shell
 >>> from app import gera_assinatura_html
->>> assinaturas = gera_assinatura_html()
->>> assinaturas
+>>> assinaturas = gera_assinatura_html
+>>> assinaturas.callback()
 {'retorno': {'assinaturas': [('Foo', 'Bar', 'dev@foo.bar'), ('Bar', 'Foo', 'dev@bar.foo')]}}
 
 ```

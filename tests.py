@@ -1,4 +1,5 @@
 import os
+from click.testing import CliRunner
 
 from .app import remover_acentos, gera_assinatura_html
 
@@ -22,6 +23,13 @@ def test_template_existe():
 
 
 def test_gera_assinaturas_html():
-    assinaturas = gera_assinatura_html()
-    print(len(assinaturas['retorno']['assinaturas']))
-    assert len(assinaturas['retorno']['assinaturas']) >= 1
+    assinaturas = gera_assinatura_html
+    assert len(assinaturas.callback()['retorno']['assinaturas']) >= 1
+
+
+def test_gera_assinaturas_html_com_click():
+    runner = CliRunner()
+    result = runner.invoke(gera_assinatura_html,
+                           ['--template', 'assinatura.html'])
+    assert not result.exception
+    assert result.exit_code == 0
