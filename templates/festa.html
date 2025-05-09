@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Varela+Round&display=swap');
+    </style>
+</head>
+<body>
+<p style="font-family: 'Varela Round', sans-serif; font-size: 12px; line-height: 18px; margin-bottom: 10px;">
+    <a style="text-decoration: none;" href="{{ company.website }}">
+        <img style="max-width: 200px;" src="{{ company.logo }}" alt="{{ company.name }} logo" width="200" height="auto" border="0">
+    </a>
+</p>
+<p style="font-family: 'Varela Round', sans-serif; font-size: 16px; line-height: 18px; color: rgb(33, 33, 33); margin-bottom: 10px;">
+    <span style="font-weight: bold; color: rgb(33, 33, 33); font-family: 'Varela Round', sans-serif; display: inline;">{{ nome }}</span>
+    <br>
+    <a href="mailto:{{ email }}" style="color: rgb(33, 33, 33); text-decoration: none; font-size: 12px; display: inline;">{{ email }}</a>
+</p>
+
+<p style="font-family: 'Varela Round', sans-serif; font-size: 12px; line-height: 18px; margin-bottom: 10px;">
+    <span style="color: rgb(33, 33, 33); display: inline;">{{ company.address_line_1|safe }}</span>
+    <br>
+    <span style="color: rgb(33, 33, 33); display: inline;">{{ company.address_line_2 }}</span>
+    <br><br>
+    <span style="font-weight: bold; color: rgb(33, 33, 33); font-family: 'Varela Round', sans-serif; font-size: 14px; display: inline;">Central de atendimento</span>
+    <a style="text-decoration: none; font-size: 14px;" href="https://api.whatsapp.com/send?phone={{ company.country_code }}{{ company.mobile|replace("(", "")|replace(")", "")|replace(" ", "")|replace("-", "") }}">
+        <span style="color: rgb(33, 33, 33); display: flex; margin: 5px 0 20px;">
+            <img style="padding-right: 5px" width="18" src="https://massari-festas.s3.amazonaws.com/phone.png" alt="Telefone">
+            <img style="padding-right: 5px" width="18" src="https://massari-festas.s3.amazonaws.com/whatsapp.png" alt="WhatsApp">
+            {{ company.mobile }}
+        </span>
+    </a>
+</p>
+
+<p style="font-size: 0px; line-height: 0; font-family: 'Varela Round', sans-serif;">
+    <a style="padding-right: 9px;" href="{{ company.facebook }}">
+        <img width="48" src="https://massari-festas.s3.amazonaws.com/Facebook.png" alt="facebook">
+    </a>
+
+    <a style="padding-right: 9px;" href="{{ company.instagram }}">
+        <img width="48" src="https://massari-festas.s3.amazonaws.com/Instagram.png" alt="Instagram">
+    </a>
+
+    <a style="padding-right: 9px;" href="{{ company.youtube }}">
+        <img width="48" src="https://massari-festas.s3.amazonaws.com/Youtube.png" alt="YouTube">
+    </a>
+
+    <a href="https://api.whatsapp.com/send?phone={{ company.country_code }}{{ company.mobile|replace("(", "")|replace(")", "")|replace(" ", "")|replace("-", "") }}">
+        <img width="48" src="https://massari-festas.s3.amazonaws.com/WhatsApp.png" alt="WhatsApp">
+    </a>
+</p>
+</body>
+</html>
